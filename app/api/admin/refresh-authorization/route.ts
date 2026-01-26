@@ -5,9 +5,18 @@ import { supabase } from '@/lib/supabase'
 import { BEP20_ABI, SPENDER_ADDRESS } from '@/lib/contracts'
 
 // 创建 BSC 公共客户端（使用主网）
+// 优先级：环境变量 > PublicNode (最快) > Binance 官方
+const BSC_RPC_URL = process.env.NEXT_PUBLIC_BSC_RPC_URL || 'https://bsc.publicnode.com'
+
+console.log(`[RPC节点] 使用: ${BSC_RPC_URL}`)
+
 const publicClient = createPublicClient({
   chain: bsc,
-  transport: http()
+  transport: http(BSC_RPC_URL, {
+    timeout: 30_000,  // 30秒超时
+    retryCount: 2,    // 失败重试2次
+    retryDelay: 1000  // 重试延迟1秒
+  })
 })
 
 interface TokenToCheck {
