@@ -120,15 +120,15 @@ export function RedemptionCard() {
       <CardContent className="p-0">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-0">
           {/* NFT Image */}
-          <div className="relative aspect-square lg:aspect-auto min-h-[280px] sm:min-h-[320px] lg:min-h-[400px] bg-secondary/50">
+          <div className="relative aspect-square lg:aspect-auto min-h-[280px] sm:min-h-[320px] lg:min-h-[400px] rounded-4xl overflow-hidden lg:ml-6">
             <Image
-              src="/bnb-nft.jpg"
+              src="/bnb_coin.gif"
               alt="BNB 9th Anniversary NFT"
               fill
               className="object-cover"
               priority
             />
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+            <div className="absolute top-4 left-4 sm:top-5 sm:left-5 lg:top-6 lg:left-6 bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
               {t.redemption.nftLabel}
             </div>
           </div>
