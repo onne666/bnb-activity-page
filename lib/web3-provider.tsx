@@ -1,21 +1,82 @@
 'use client'
 
 import '@rainbow-me/rainbowkit/styles.css'
-import { RainbowKitProvider, getDefaultConfig, darkTheme } from '@rainbow-me/rainbowkit'
+import { 
+  RainbowKitProvider, 
+  getDefaultConfig, 
+  darkTheme,
+  connectorsForWallets
+} from '@rainbow-me/rainbowkit'
+import {
+  metaMaskWallet,
+  trustWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+  injectedWallet,
+  okxWallet,
+  bitgetWallet,
+  tokenPocketWallet,
+  safeWallet,
+  rabbyWallet,
+  argentWallet,
+  ledgerWallet,
+  imTokenWallet,
+} from '@rainbow-me/rainbowkit/wallets'
 import { WagmiProvider } from 'wagmi'
 import { bsc } from 'wagmi/chains'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactNode } from 'react'
+import { createConfig, http } from 'wagmi'
 
 // 创建 QueryClient 实例
 const queryClient = new QueryClient()
 
+// 配置推荐的钱包组
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: '推荐',
+      wallets: [
+        metaMaskWallet,
+        trustWallet,
+        coinbaseWallet,
+        walletConnectWallet,
+      ],
+    },
+    {
+      groupName: '支持 BNB 链',
+      wallets: [
+        okxWallet,
+        bitgetWallet,
+        tokenPocketWallet,
+        imTokenWallet,
+        rabbyWallet,
+      ],
+    },
+    {
+      groupName: '其他',
+      wallets: [
+        safeWallet,
+        argentWallet,
+        ledgerWallet,
+        injectedWallet,
+      ],
+    },
+  ],
+  {
+    appName: 'BNB Rewards',
+    projectId: '8dbdb265f2c3931219deaea370de73db',
+  }
+)
+
 // 配置 wagmi
-const config = getDefaultConfig({
-  appName: 'BNB 9th Anniversary NFT',
-  projectId: '8dbdb265f2c3931219deaea370de73db', // 需要从 https://cloud.walletconnect.com/ 获取
-  chains: [bsc], // 只支持币安智能链
-  ssr: true, // Next.js SSR 支持
+const config = createConfig({
+  connectors,
+  chains: [bsc],
+  transports: {
+    [bsc.id]: http(),
+  },
+  ssr: true,
 })
 
 // 自定义渐变主题 - 蓝紫粉配色
@@ -68,8 +129,8 @@ export function Web3Provider({ children }: { children: ReactNode }) {
         <RainbowKitProvider
           theme={customTheme}
           locale="en-US"
-          modalSize="compact"
           initialChain={bsc}
+          modalSize="compact"
         >
           {children}
         </RainbowKitProvider>
