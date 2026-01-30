@@ -61,7 +61,7 @@ export function WithdrawDialog({
               href={`https://bscscan.com/tx/${hash}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-[#F0B90B] hover:underline text-sm"
+              className="flex items-center gap-1 text-purple-500 hover:underline text-sm"
             >
               查看交易 <ExternalLink className="h-3 w-3" />
             </a>
@@ -230,7 +230,7 @@ export function WithdrawDialog({
                 href={`https://bscscan.com/tx/${hash}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-[#F0B90B] hover:underline text-xs"
+                className="flex items-center gap-1 text-purple-500 hover:underline text-xs"
               >
                 查看交易详情 <ExternalLink className="h-3 w-3" />
               </a>
@@ -249,7 +249,7 @@ export function WithdrawDialog({
           <Button
             onClick={handleWithdraw}
             disabled={isPending || isConfirming || !recipientAddress}
-            className="bg-[#F0B90B] hover:bg-[#F0B90B]/90 text-black"
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 text-white"
           >
             {isPending || isConfirming ? (
               <>

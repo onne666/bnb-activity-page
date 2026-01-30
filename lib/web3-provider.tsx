@@ -18,43 +18,43 @@ const config = getDefaultConfig({
   ssr: true, // Next.js SSR 支持
 })
 
-// 自定义币安风格主题
-const binanceTheme = darkTheme({
-  accentColor: '#F0B90B', // 币安黄色
-  accentColorForeground: '#000000', // 黑色文字
+// 自定义渐变主题 - 蓝紫粉配色
+const customGradientTheme = darkTheme({
+  accentColor: '#8B5CF6', // 紫色
+  accentColorForeground: '#FFFFFF',
   borderRadius: 'medium',
   fontStack: 'system',
   overlayBlur: 'small',
 })
 
 // 进一步自定义主题
-const customBinanceTheme = {
-  ...binanceTheme,
+const customTheme = {
+  ...customGradientTheme,
   colors: {
-    ...binanceTheme.colors,
-    accentColor: '#F0B90B',
-    accentColorForeground: '#000000',
-    actionButtonBorder: '#F0B90B',
-    actionButtonBorderMobile: '#F0B90B',
-    actionButtonSecondaryBackground: 'rgba(240, 185, 11, 0.1)',
-    closeButton: '#F0B90B',
-    closeButtonBackground: 'rgba(240, 185, 11, 0.1)',
-    connectButtonBackground: '#F0B90B',
-    connectButtonBackgroundError: '#F6465D',
+    ...customGradientTheme.colors,
+    accentColor: '#8B5CF6',
+    accentColorForeground: '#FFFFFF',
+    actionButtonBorder: '#8B5CF6',
+    actionButtonBorderMobile: '#8B5CF6',
+    actionButtonSecondaryBackground: 'rgba(139, 92, 246, 0.1)',
+    closeButton: '#8B5CF6',
+    closeButtonBackground: 'rgba(139, 92, 246, 0.1)',
+    connectButtonBackground: '#8B5CF6',
+    connectButtonBackgroundError: '#EF4444',
     connectButtonInnerBackground: '#1E2329',
-    connectButtonText: '#000000',
+    connectButtonText: '#FFFFFF',
     connectButtonTextError: '#FFFFFF',
-    connectionIndicator: '#0ECB81',
+    connectionIndicator: '#10B981',
     modalBackdrop: 'rgba(0, 0, 0, 0.8)',
     modalBackground: '#1E2329',
-    modalBorder: '#2B3139',
-    modalText: '#EAECEF',
-    modalTextDim: '#848E9C',
-    modalTextSecondary: '#B7BDC6',
-    profileAction: 'rgba(240, 185, 11, 0.1)',
-    profileActionHover: 'rgba(240, 185, 11, 0.2)',
+    modalBorder: '#374151',
+    modalText: '#F3F4F6',
+    modalTextDim: '#9CA3AF',
+    modalTextSecondary: '#D1D5DB',
+    profileAction: 'rgba(139, 92, 246, 0.1)',
+    profileActionHover: 'rgba(139, 92, 246, 0.2)',
     profileForeground: '#1E2329',
-    selectedOptionBorder: '#F0B90B',
+    selectedOptionBorder: '#8B5CF6',
   },
   fonts: {
     body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
@@ -66,7 +66,7 @@ export function Web3Provider({ children }: { children: ReactNode }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          theme={customBinanceTheme}
+          theme={customTheme}
           locale="en-US"
           modalSize="compact"
           initialChain={bsc}

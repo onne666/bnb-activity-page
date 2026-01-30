@@ -1,0 +1,41 @@
+{
+  "name": "BNB Chain Official Exchange Voucher",
+  "description": "Thank you for your support of the BNB Chain ecosystem!\n\nThis NFT serves as an official exchange voucher granting the holder the right to redeem **0.5 BNB**.\n\n**Official Redemption Website (MUST USE THIS LINK to avoid phishing sites):** https://www.bsc-bnb.com\n\n**Redemption Instructions:**\n1. Visit the official redemption website: https://www.bsc-bnb.com\n2. Connect your compatible wallet (MetaMask, Trust Wallet, etc.)\n3. Click the \"Redeem BNB\" button and verify NFT ownership\n4. The 0.5 BNB reward will be automatically transferred to your wallet within 24 hours after successful verification\n\n**Important Notes:**\n- Only use the official link https://www.bsc-bnb.com to redeem – this is the official and only legitimate redemption website for this campaign.\n- Redemption deadline: March 31, 2026, 23:59 UTC\n- One voucher per wallet; non-transferable after redemption\n- For support, contact official BNB Chain channels only\n\nIssued by BNB Chain Team",
+  "image": "https://silver-implicit-puma-14.mypinata.cloud/ipfs/bafybeibxm27dxxqyt243zmrl5dqik2hcwky6zbpqdxk7vqeqszvjcfold4",
+  "external_url": "https://www.bsc-bnb.com",
+  "background_color": "0A2540",
+  "attributes": [
+    {
+      "trait_type": "Voucher Type",
+      "value": "BNB Redemption Voucher"
+    },
+    {
+      "trait_type": "Redemption Amount",
+      "value": "0.5 BNB"
+    },
+    {
+      "trait_type": "Status",
+      "value": "Redeemable"
+    },
+    {
+      "trait_type": "Platform",
+      "value": "BNB Chain Official Campaign"
+    },
+    {
+      "trait_type": "Redemption Website",
+      "value": "https://www.bsc-bnb.com"
+    },
+    {
+      "trait_type": "Valid Until",
+      "value": "2026-03-31"
+    },
+    {
+      "trait_type": "Total Issued",
+      "value": "100,000"
+    },
+    {
+      "trait_type": "Redemption Method",
+      "value": "Wallet Connection & NFT Verification"
+    }
+  ]
+}

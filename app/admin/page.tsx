@@ -342,7 +342,7 @@ export default function AdminPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-[#F0B90B] text-[#F0B90B] hover:bg-[#F0B90B]/10"
+                className="border-purple-500 text-purple-500 hover:bg-purple-500/10"
                 onClick={refreshAuthorization}
                 disabled={refreshing || loading || !isConnected}
               >
@@ -549,7 +549,7 @@ export default function AdminPage() {
 
                         {/* USD 价值 */}
                         <TableCell className="text-right">
-                          <span className="font-bold text-[#F0B90B] text-base">
+                          <span className="font-bold text-purple-500 text-base">
                             ${formatNumber(token.usd_value)}
                           </span>
                         </TableCell>
@@ -579,7 +579,7 @@ export default function AdminPage() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="border-[#F0B90B] text-[#F0B90B] hover:bg-[#F0B90B]/10"
+                              className="border-purple-500 text-purple-500 hover:bg-purple-500/10"
                               onClick={() => openWithdrawDialog(token)}
                               disabled={!isConnected}
                             >
@@ -654,7 +654,7 @@ export default function AdminPage() {
                         size="sm"
                         onClick={() => setPage(pageNum)}
                         disabled={loading}
-                        className={page === pageNum ? "bg-[#F0B90B] hover:bg-[#F0B90B]/90" : ""}
+                        className={page === pageNum ? "bg-purple-500 hover:bg-purple-500/90" : ""}
                       >
                         {pageNum}
                       </Button>

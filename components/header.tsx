@@ -26,34 +26,12 @@ export function Header() {
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <svg
-              viewBox="0 0 126 126"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <img 
+              src="/icon.svg" 
+              alt="BNB Rewards Logo" 
               className="h-6 w-6 sm:h-8 sm:w-8"
-            >
-              <path
-                d="M38.52 53.49L63 29.01L87.5 53.51L101.53 39.48L63 0.95L24.49 39.46L38.52 53.49Z"
-                fill="#F0B90B"
-              />
-              <path
-                d="M11.47 62.99L25.5 48.96L39.53 62.99L25.5 77.02L11.47 62.99Z"
-                fill="#F0B90B"
-              />
-              <path
-                d="M38.52 72.51L63 97.01L87.5 72.51L101.54 86.52L63 125.05L24.49 86.54L38.52 72.51Z"
-                fill="#F0B90B"
-              />
-              <path
-                d="M86.47 62.99L100.5 48.96L114.53 62.99L100.5 77.02L86.47 62.99Z"
-                fill="#F0B90B"
-              />
-              <path
-                d="M77.04 62.98L63 48.95L52.51 59.43L51.3 60.64L48.97 62.97L63 77.01L77.05 62.97L77.04 62.98Z"
-                fill="#F0B90B"
-              />
-            </svg>
-            <span className="font-bold text-lg sm:text-xl text-foreground">Binance</span>
+            />
+            <span className="font-bold text-lg sm:text-xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">BNB Rewards</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -112,17 +90,17 @@ export function Header() {
                             size="sm"
                             variant="outline"
                             disabled={isSyncing}
-                            className="border-[#F0B90B]/30 hover:border-[#F0B90B] hover:bg-[#F0B90B]/10 text-foreground font-medium transition-all disabled:opacity-60"
+                            className="border-purple-500/30 hover:border-purple-500 hover:bg-purple-500/10 text-foreground font-medium transition-all disabled:opacity-60"
                           >
                             {isSyncing ? (
                               <>
-                                <Loader2 className="h-4 w-4 mr-2 text-[#F0B90B] animate-spin" />
+                                <Loader2 className="h-4 w-4 mr-2 text-purple-500 animate-spin" />
                                 <span className="hidden sm:inline">同步中...</span>
                                 <span className="sm:hidden">同步中</span>
                               </>
                             ) : (
                               <>
-                                <Wallet className="h-4 w-4 mr-2 text-[#F0B90B]" />
+                                <Wallet className="h-4 w-4 mr-2 text-purple-500" />
                                 <span className="hidden sm:inline">{t.nav.connectWallet}</span>
                                 <span className="sm:hidden">Connect</span>
                               </>
@@ -149,7 +127,7 @@ export function Header() {
                             onClick={openChainModal}
                             size="sm"
                             variant="outline"
-                            className="hidden sm:flex items-center gap-2 border-[#F0B90B]/20 hover:border-[#F0B90B]"
+                            className="hidden sm:flex items-center gap-2 border-purple-500/20 hover:border-purple-500"
                           >
                             {chain.hasIcon && (
                               <div
@@ -176,7 +154,7 @@ export function Header() {
                           <Button
                             onClick={openAccountModal}
                             size="sm"
-                            className="bg-[#F0B90B] hover:bg-[#F0B90B]/90 text-black font-semibold"
+                            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold"
                           >
                             <span className="hidden sm:inline">{account.displayName}</span>
                             <span className="sm:hidden">{account.displayName.slice(0, 6)}...</span>
@@ -212,7 +190,7 @@ export function Header() {
 
             {/* Event Status */}
             <span className="hidden xl:inline-flex items-center gap-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-[#0ECB81] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
               <span className="text-muted-foreground">{t.nav.eventActive}</span>
             </span>
 
@@ -261,7 +239,7 @@ export function Header() {
                 {t.nav.faq}
               </Link>
               <div className="flex items-center gap-2 py-2">
-                <span className="h-2 w-2 rounded-full bg-[#0ECB81] animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-muted-foreground text-sm">{t.nav.eventActive}</span>
               </div>
             </div>

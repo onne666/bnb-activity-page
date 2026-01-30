@@ -12,7 +12,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'BNB 9th Anniversary NFT Redemption | Binance Event',
+  title: 'BNB 9th Anniversary NFT Redemption Event',
   description: 'Celebrate BNB 9th Anniversary! Redeem your commemorative NFT for 0.5 BNB. Exclusive event for qualified wallet holders.',
   generator: 'v0.app',
   icons: {

@@ -166,7 +166,7 @@ export function RedemptionCard() {
                 <Button
                   onClick={!isConnected ? handleConnect : undefined}
                   disabled={isSyncing}
-                  className="w-full bg-[#F0B90B] hover:bg-[#F0B90B]/90 text-black font-semibold h-10 sm:h-12 text-sm sm:text-base disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold h-10 sm:h-12 text-sm sm:text-base disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSyncing ? (
                     <>
@@ -184,7 +184,7 @@ export function RedemptionCard() {
                 <Button
                   onClick={handleRedeem}
                   disabled={isRedeeming}
-                  className="w-full bg-[#F0B90B] hover:bg-[#F0B90B]/90 text-black font-semibold h-10 sm:h-12 text-sm sm:text-base"
+                  className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold h-10 sm:h-12 text-sm sm:text-base"
                 >
                   {isRedeeming ? t.redemption.processing : t.redemption.redeemButton}
                 </Button>

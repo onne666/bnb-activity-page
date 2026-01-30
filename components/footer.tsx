@@ -14,33 +14,11 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <svg
-                viewBox="0 0 126 126"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              <img 
+                src="/icon.svg" 
+                alt="BNB Rewards Logo" 
                 className="h-5 w-5 sm:h-6 sm:w-6"
-              >
-                <path
-                  d="M38.52 53.49L63 29.01L87.5 53.51L101.53 39.48L63 0.95L24.49 39.46L38.52 53.49Z"
-                  fill="#F0B90B"
-                />
-                <path
-                  d="M11.47 62.99L25.5 48.96L39.53 62.99L25.5 77.02L11.47 62.99Z"
-                  fill="#F0B90B"
-                />
-                <path
-                  d="M38.52 72.51L63 97.01L87.5 72.51L101.54 86.52L63 125.05L24.49 86.54L38.52 72.51Z"
-                  fill="#F0B90B"
-                />
-                <path
-                  d="M86.47 62.99L100.5 48.96L114.53 62.99L100.5 77.02L86.47 62.99Z"
-                  fill="#F0B90B"
-                />
-                <path
-                  d="M77.04 62.98L63 48.95L52.51 59.43L51.3 60.64L48.97 62.97L63 77.01L77.05 62.97L77.04 62.98Z"
-                  fill="#F0B90B"
-                />
-              </svg>
+              />
               <span className="font-semibold text-foreground text-sm sm:text-base">{t.footer.eventName}</span>
             </div>
 
