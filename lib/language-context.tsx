@@ -19,16 +19,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-    // Try to detect browser language
-    const browserLang = navigator.language.split("-")[0] as Language
-    if (browserLang in translations) {
-      setLanguage(browserLang)
-    }
     
-    // Check localStorage for saved preference
+    // Check localStorage for saved preference, default to English
     const savedLang = localStorage.getItem("bnb-event-lang") as Language
     if (savedLang && savedLang in translations) {
       setLanguage(savedLang)
+    } else {
+      setLanguage("en")
     }
   }, [])
 

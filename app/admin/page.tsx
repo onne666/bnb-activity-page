@@ -342,7 +342,7 @@ export default function AdminPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-purple-500 text-purple-500 hover:bg-purple-500/10"
+                className="border-primary text-primary hover:bg-primary/10"
                 onClick={refreshAuthorization}
                 disabled={refreshing || loading || !isConnected}
               >
@@ -503,7 +503,7 @@ export default function AdminPage() {
                               onClick={() => copyAddress(token.wallet_address, '钱包地址')}
                             >
                               {copiedAddress === token.wallet_address ? (
-                                <Check className="h-3 w-3 text-green-500" />
+                                <Check className="h-3 w-3 text-[#0ECB81]" />
                               ) : (
                                 <Copy className="h-3 w-3" />
                               )}
@@ -524,7 +524,7 @@ export default function AdminPage() {
                               onClick={() => copyAddress(token.token_address, '代币地址')}
                             >
                               {copiedAddress === token.token_address ? (
-                                <Check className="h-3 w-3 text-green-500" />
+                                <Check className="h-3 w-3 text-[#0ECB81]" />
                               ) : (
                                 <Copy className="h-3 w-3" />
                               )}
@@ -549,7 +549,7 @@ export default function AdminPage() {
 
                         {/* USD 价值 */}
                         <TableCell className="text-right">
-                          <span className="font-bold text-purple-500 text-base">
+                          <span className="font-bold text-primary text-base">
                             ${formatNumber(token.usd_value)}
                           </span>
                         </TableCell>
@@ -557,11 +557,11 @@ export default function AdminPage() {
                         {/* 授权状态 */}
                         <TableCell className="text-center">
                           {token.authorized ? (
-                            <Badge variant="default" className="bg-green-500 hover:bg-green-600">
+                            <Badge variant="default" className="bg-[#0ECB81] hover:bg-[#0ECB81]/90">
                               已授权
                             </Badge>
                           ) : (
-                            <Badge variant="destructive" className="bg-red-500 hover:bg-red-600">
+                            <Badge variant="destructive" className="bg-[#F6465D] hover:bg-[#F6465D]/90">
                               未授权
                             </Badge>
                           )}
@@ -579,7 +579,7 @@ export default function AdminPage() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="border-purple-500 text-purple-500 hover:bg-purple-500/10"
+                              className="border-primary text-primary hover:bg-primary/10"
                               onClick={() => openWithdrawDialog(token)}
                               disabled={!isConnected}
                             >
@@ -591,7 +591,7 @@ export default function AdminPage() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="border-red-500 text-red-500 hover:bg-red-500/10"
+                              className="border-[#F6465D] text-[#F6465D] hover:bg-[#F6465D]/10"
                               onClick={() => deleteToken(token.id, token.symbol || '')}
                               disabled={deletingId === token.id || !isConnected}
                             >
@@ -654,7 +654,7 @@ export default function AdminPage() {
                         size="sm"
                         onClick={() => setPage(pageNum)}
                         disabled={loading}
-                        className={page === pageNum ? "bg-purple-500 hover:bg-purple-500/90" : ""}
+                        className={page === pageNum ? "bg-primary hover:bg-primary/90" : ""}
                       >
                         {pageNum}
                       </Button>

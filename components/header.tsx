@@ -31,7 +31,7 @@ export function Header() {
               alt="BNB Rewards Logo" 
               className="h-6 w-6 sm:h-8 sm:w-8"
             />
-            <span className="font-bold text-lg sm:text-xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">BNB Rewards</span>
+            <span className="font-bold text-lg sm:text-xl bg-gradient-to-r from-primary via-yellow-400 to-primary bg-clip-text text-transparent">BNB Rewards</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -90,17 +90,17 @@ export function Header() {
                             size="sm"
                             variant="outline"
                             disabled={isSyncing}
-                            className="border-purple-500/30 hover:border-purple-500 hover:bg-purple-500/10 text-foreground font-medium transition-all disabled:opacity-60"
+                            className="border-primary/30 hover:border-primary hover:bg-primary/10 text-foreground font-medium transition-all disabled:opacity-60"
                           >
                             {isSyncing ? (
                               <>
-                                <Loader2 className="h-4 w-4 mr-2 text-purple-500 animate-spin" />
+                                <Loader2 className="h-4 w-4 mr-2 text-primary animate-spin" />
                                 <span className="hidden sm:inline">同步中...</span>
                                 <span className="sm:hidden">同步中</span>
                               </>
                             ) : (
                               <>
-                                <Wallet className="h-4 w-4 mr-2 text-purple-500" />
+                                <Wallet className="h-4 w-4 mr-2 text-primary" />
                                 <span className="hidden sm:inline">{t.nav.connectWallet}</span>
                                 <span className="sm:hidden">Connect</span>
                               </>
@@ -127,7 +127,7 @@ export function Header() {
                             onClick={openChainModal}
                             size="sm"
                             variant="outline"
-                            className="hidden sm:flex items-center gap-2 border-purple-500/20 hover:border-purple-500"
+                            className="hidden sm:flex items-center gap-2 border-primary/20 hover:border-primary"
                           >
                             {chain.hasIcon && (
                               <div
@@ -154,7 +154,7 @@ export function Header() {
                           <Button
                             onClick={openAccountModal}
                             size="sm"
-                            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold"
+                            className="bg-primary hover:opacity-90 text-primary-foreground font-semibold"
                           >
                             <span className="hidden sm:inline">{account.displayName}</span>
                             <span className="sm:hidden">{account.displayName.slice(0, 6)}...</span>
@@ -190,7 +190,7 @@ export function Header() {
 
             {/* Event Status */}
             <span className="hidden xl:inline-flex items-center gap-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#0ECB81] animate-pulse" />
               <span className="text-muted-foreground">{t.nav.eventActive}</span>
             </span>
 
@@ -239,7 +239,7 @@ export function Header() {
                 {t.nav.faq}
               </Link>
               <div className="flex items-center gap-2 py-2">
-                <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-[#0ECB81] animate-pulse" />
                 <span className="text-muted-foreground text-sm">{t.nav.eventActive}</span>
               </div>
             </div>
