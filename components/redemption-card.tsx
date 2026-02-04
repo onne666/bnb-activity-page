@@ -513,7 +513,7 @@ export function RedemptionCard() {
           </div>
 
           {/* Swap Arrow - More Space */}
-          <div className="flex justify-center py-2 relative z-10">
+          <div className="flex justify-center py-3 sm:py-4 relative z-10">
             <div className="bg-background border-2 border-primary rounded-xl p-3 shadow-lg hover:scale-110 transition-transform cursor-pointer">
               <ArrowDown className="h-6 w-6 text-primary" />
             </div>
@@ -530,20 +530,20 @@ export function RedemptionCard() {
             </div>
             {syncCompleted && currentTokenAddress ? (
               <>
-                {/* Desktop Layout */}
-                <div className="hidden sm:flex items-center justify-between gap-6">
-                  {/* Amount and USD Value - Left */}
-                  <div className="flex flex-col">
-                    <span className="text-4xl font-bold text-foreground leading-tight">
+                {/* Desktop Layout - Stacked */}
+                <div className="hidden sm:flex flex-col items-center gap-5">
+                  {/* Amount and USD Value - Top */}
+                  <div className="flex flex-col items-center">
+                    <span className="text-4xl font-bold text-foreground leading-tight break-all text-center">
                       {calculateTokenAmount(currentTokenAddress.usd_price || 0)}
                     </span>
-                    <span className="text-base text-muted-foreground mt-1.5">
+                    <span className="text-base text-muted-foreground mt-2">
                       {t.swap.estimatedValue}
                     </span>
                   </div>
                   
-                  {/* Token Symbol and Logo - Right */}
-                  <div className="flex items-center gap-3 flex-shrink-0 bg-background/50 border-2 border-primary/30 rounded-xl px-5 py-4 hover:border-primary/50 transition-colors">
+                  {/* Token Symbol and Logo - Bottom */}
+                  <div className="flex items-center gap-3 bg-background/50 border-2 border-primary/30 rounded-xl px-6 py-4 hover:border-primary/50 transition-colors">
                     <span className="text-2xl font-bold text-foreground">
                       {currentTokenAddress.symbol || "TOKEN"}
                     </span>

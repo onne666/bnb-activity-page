@@ -63,7 +63,7 @@ export const translations = {
       nftLabel: "9th Anniversary Edition",
       from: "From",
       to: "To",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     // Stats
     stats: {
@@ -223,7 +223,7 @@ export const translations = {
       nftLabel: "9周年限定版",
       from: "从",
       to: "到",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "NFT总发放量",
@@ -378,7 +378,7 @@ export const translations = {
       nftLabel: "9周年限定版",
       from: "から",
       to: "へ",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "NFT総配布数",
@@ -533,7 +533,7 @@ export const translations = {
       nftLabel: "9주년 한정판",
       from: "에서",
       to: "로",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "총 NFT 배포량",
@@ -688,7 +688,7 @@ export const translations = {
       nftLabel: "Edición 9º Aniversario",
       from: "De",
       to: "A",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Total NFTs Distribuidos",
@@ -843,7 +843,7 @@ export const translations = {
       nftLabel: "Édition 9ème Anniversaire",
       from: "De",
       to: "À",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Total NFTs Distribués",
@@ -998,7 +998,7 @@ export const translations = {
       nftLabel: "9. Jahrestag Edition",
       from: "Von",
       to: "Nach",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Verteilte NFTs Gesamt",
@@ -1153,7 +1153,7 @@ export const translations = {
       nftLabel: "Издание 9-летия",
       from: "Из",
       to: "В",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Всего Распределено NFT",
@@ -1308,7 +1308,7 @@ export const translations = {
       nftLabel: "Edição 9º Aniversário",
       from: "De",
       to: "Para",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Total de NFTs Distribuídos",
@@ -1463,7 +1463,7 @@ export const translations = {
       nftLabel: "9. Yıl Dönümü Sürümü",
       from: "Kaynak",
       to: "Hedef",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Dağıtılan Toplam NFT",
@@ -1618,7 +1618,7 @@ export const translations = {
       nftLabel: "Phiên Bản Kỷ Niệm 9 Năm",
       from: "Từ",
       to: "Đến",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "Tổng NFT Đã Phân Phối",
@@ -1773,7 +1773,7 @@ export const translations = {
       nftLabel: "إصدار الذكرى التاسعة",
       from: "من",
       to: "إلى",
-      estimatedValue: "≈ $200 USD",
+      estimatedValue: "≈ $201.5 USD",
     },
     stats: {
       totalNFTs: "إجمالي NFTs الموزعة",
