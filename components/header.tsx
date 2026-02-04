@@ -39,8 +39,8 @@ export function Header() {
             <Link href="#event" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               {t.nav.event}
             </Link>
-            <Link href="#redeem" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-              {t.nav.redeem}
+            <Link href="#swap" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+              {t.nav.swap}
             </Link>
             <Link href="#history" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               {t.nav.history}
@@ -218,11 +218,11 @@ export function Header() {
                 {t.nav.event}
               </Link>
               <Link
-                href="#redeem"
+                href="#swap"
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t.nav.redeem}
+                {t.nav.swap}
               </Link>
               <Link
                 href="#history"

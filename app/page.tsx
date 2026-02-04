@@ -10,9 +10,10 @@ import { FAQ } from "@/components/faq"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
-  // Event ends in 7 days from now
+  // Event countdown starts from 16 days
   const eventEndDate = new Date()
-  eventEndDate.setDate(eventEndDate.getDate() + 7)
+  eventEndDate.setDate(eventEndDate.getDate() + 16)
+  eventEndDate.setHours(23, 59, 59, 999) // Set to end of 16th day
 
   return (
     <div className="min-h-screen bg-background">
@@ -21,7 +22,7 @@ export default function Home() {
       {/* Hero Section with Event Intro and Countdown */}
       <HeroSection eventEndDate={eventEndDate} />
 
-      {/* Redemption Section - Directly after countdown */}
+      {/* Swap Section - Directly after countdown */}
       <RedemptionSection />
 
       {/* Stats Section */}

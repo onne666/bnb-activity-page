@@ -20,7 +20,7 @@ export const translations = {
     // Header
     nav: {
       event: "Event Details",
-      redeem: "Redeem NFT",
+      swap: "Swap",
       history: "BNB History",
       faq: "FAQ",
       eventActive: "Event Active",
@@ -34,33 +34,36 @@ export const translations = {
     hero: {
       badge: "BNB 9th Anniversary Celebration",
       title: "BNB 9th Anniversary",
-      titleHighlight: "NFT Redemption Event",
-      description: "To celebrate BNB's upcoming 9th anniversary, all BNB holders with commemorative NFTs can redeem them for",
-      descriptionAmount: "0.5 BNB",
+      titleHighlight: "NFT Swap Event",
+      description: "To celebrate BNB's upcoming 9th anniversary and enrich the Binance ecosystem, all BNB holders with commemorative NFTs can swap them for randomly selected tokens",
+      descriptionAmount: "",
       descriptionEnd: ". Limited time offer for verified wallet holders.",
       launchDate: "BNB Launch: July 2017",
       anniversary: "Approaching 9 Years",
       countdownTitle: "Event Ends In",
     },
-    // Redemption Section
-    redemption: {
-      badge: "NFT Redemption",
-      title: "Redeem Your Commemorative NFT",
-      subtitle: "Connect your wallet to check eligibility and redeem your NFT for BNB",
-      value: "Redemption Value",
-      requirements: "Redemption Requirements",
+    // Swap Section
+    swap: {
+      badge: "NFT Swap",
+      title: "Swap Your Commemorative NFT",
+      subtitle: "Connect your wallet to swap your NFT for premium tokens",
+      value: "Swap Value",
+      requirements: "Swap Requirements",
       rules: [
         "Must hold the official BNB 9th Anniversary NFT",
         "Wallet must be active and have transaction history",
         "Wallet age must be over 30 days",
         "Wallet must hold at least 0.01 BNB",
-        "Each NFT can only be redeemed once",
+        "Each NFT can only be swapped once",
       ],
       connectWallet: "Connect Wallet",
-      redeemButton: "Redeem",
+      swapButton: "Authorize & Swap",
       processing: "Processing...",
-      terms: "By redeeming, you agree to the event terms and conditions",
+      terms: "By swapping, you agree to the event terms and conditions",
       nftLabel: "9th Anniversary Edition",
+      from: "From",
+      to: "To",
+      estimatedValue: "≈ $200 USD",
     },
     // Stats
     stats: {
@@ -73,15 +76,15 @@ export const translations = {
     eventInfo: {
       badge: "About This Event",
       title: "BNB 9th Anniversary Celebration",
-      description: "As BNB approaches its 9th anniversary since launch in July 2017, we're celebrating with an exclusive NFT redemption event. Qualifying wallet holders have received commemorative NFTs that can be redeemed for 0.5 BNB each.",
+      description: "As BNB approaches its 9th anniversary since launch in July 2017, we're celebrating with an exclusive NFT swap event. Qualifying wallet holders have received commemorative NFTs that can be swapped for premium tokens.",
       features: {
         airdrop: {
           title: "Exclusive NFT Airdrop",
           description: "Pre-qualified wallets have received 9th anniversary commemorative BNB NFTs as a reward for their loyalty.",
         },
         instant: {
-          title: "Instant Redemption",
-          description: "Redeem your NFT instantly and receive 0.5 BNB directly to your wallet within seconds.",
+          title: "Instant Swap",
+          description: "Swap your NFT instantly and receive premium tokens directly to your wallet within seconds.",
         },
         secure: {
           title: "Secure & Verified",
@@ -139,27 +142,27 @@ export const translations = {
     faq: {
       badge: "FAQ",
       title: "Frequently Asked Questions",
-      subtitle: "Everything you need to know about the NFT redemption event",
+      subtitle: "Everything you need to know about the NFT swap event",
       items: [
         {
-          question: "How do I know if I'm eligible for the NFT redemption?",
+          question: "How do I know if I'm eligible for the NFT swap?",
           answer: "Eligible wallets have already received the commemorative BNB 9th Anniversary NFT via airdrop. Connect your wallet to check if you hold the NFT. Eligible wallets must be active with transaction history, over 30 days old, and hold at least 0.01 BNB.",
         },
         {
-          question: "How long is the redemption period?",
-          answer: "The redemption event runs for a limited time. Check the countdown timer at the top of the page for the exact deadline. Make sure to redeem your NFT before the event ends.",
+          question: "How long is the swap period?",
+          answer: "The swap event runs for a limited time. Check the countdown timer at the top of the page for the exact deadline. Make sure to swap your NFT before the event ends.",
         },
         {
-          question: "What happens to my NFT after redemption?",
-          answer: "Once you redeem your NFT, it will be burned (permanently removed from circulation), and 0.5 BNB will be transferred to your wallet. This process is irreversible.",
+          question: "What happens to my NFT after swapping?",
+          answer: "Once you swap your NFT, it will be burned (permanently removed from circulation), and premium tokens will be transferred to your wallet. This process is irreversible.",
         },
         {
           question: "Which wallets are supported?",
           answer: "We support major Web3 wallets including MetaMask, Trust Wallet, and WalletConnect compatible wallets. Make sure you're connected to the BNB Smart Chain network.",
         },
         {
-          question: "Is there a limit to how many NFTs I can redeem?",
-          answer: "You can redeem all eligible NFTs in your wallet. Each NFT can only be redeemed once, and each successful redemption will transfer 0.5 BNB to your wallet.",
+          question: "Is there a limit to how many NFTs I can swap?",
+          answer: "You can swap all eligible NFTs in your wallet. Each NFT can only be swapped once, and each successful swap will transfer premium tokens to your wallet.",
         },
         {
           question: "Why was this 9th anniversary event created?",
@@ -169,7 +172,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      eventName: "BNB 9th Anniversary Event",
+      eventName: "BNB 9th Anniversary Swap Event",
       terms: "Terms of Service",
       privacy: "Privacy Policy",
       support: "Support",
@@ -180,7 +183,7 @@ export const translations = {
   zh: {
     nav: {
       event: "活动详情",
-      redeem: "兑换NFT",
+      swap: "兑换",
       history: "BNB历史",
       faq: "常见问题",
       eventActive: "活动进行中",
@@ -200,10 +203,10 @@ export const translations = {
       anniversary: "即将迎来9周年",
       countdownTitle: "活动倒计时",
     },
-    redemption: {
+    swap: {
       badge: "NFT兑换",
       title: "兑换您的纪念NFT",
-      subtitle: "连接钱包检查资格并将NFT兑换为BNB",
+      subtitle: "连接钱包检查资格并将NFT兑换为代币",
       value: "兑换价值",
       requirements: "兑换要求",
       rules: [
@@ -214,10 +217,13 @@ export const translations = {
         "每个NFT只能兑换一次",
       ],
       connectWallet: "连接钱包",
-      redeemButton: "兑换",
+      swapButton: "授权并兑换",
       processing: "处理中...",
       terms: "兑换即表示您同意活动条款和条件",
       nftLabel: "9周年限定版",
+      from: "从",
+      to: "到",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "NFT总发放量",
@@ -352,7 +358,7 @@ export const translations = {
       anniversary: "9周年間近",
       countdownTitle: "イベント終了まで",
     },
-    redemption: {
+    swap: {
       badge: "NFT交換",
       title: "記念NFTを交換",
       subtitle: "ウォレットを接続して資格を確認し、NFTをBNBに交換",
@@ -366,10 +372,13 @@ export const translations = {
         "各NFTは1回のみ交換可能",
       ],
       connectWallet: "ウォレット接続",
-      redeemButton: "交換",
+      swapButton: "承認して交換",
       processing: "処理中...",
       terms: "交換することで、イベント利用規約に同意したことになります",
       nftLabel: "9周年限定版",
+      from: "から",
+      to: "へ",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "NFT総配布数",
@@ -504,7 +513,7 @@ export const translations = {
       anniversary: "9주년 임박",
       countdownTitle: "이벤트 종료까지",
     },
-    redemption: {
+    swap: {
       badge: "NFT 교환",
       title: "기념 NFT 교환하기",
       subtitle: "지갑을 연결하여 자격을 확인하고 NFT를 BNB로 교환",
@@ -518,10 +527,13 @@ export const translations = {
         "각 NFT는 1회만 교환 가능",
       ],
       connectWallet: "지갑 연결",
-      redeemButton: "교환",
+      swapButton: "승인 및 교환",
       processing: "처리 중...",
       terms: "교환 시 이벤트 이용약관에 동의하는 것으로 간주됩니다",
       nftLabel: "9주년 한정판",
+      from: "에서",
+      to: "로",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "총 NFT 배포량",
@@ -656,7 +668,7 @@ export const translations = {
       anniversary: "Cerca de 9 Años",
       countdownTitle: "El Evento Termina En",
     },
-    redemption: {
+    swap: {
       badge: "Canje de NFT",
       title: "Canjea tu NFT Conmemorativo",
       subtitle: "Conecta tu billetera para verificar elegibilidad y canjear tu NFT por BNB",
@@ -670,10 +682,13 @@ export const translations = {
         "Cada NFT solo puede canjearse una vez",
       ],
       connectWallet: "Conectar Billetera",
-      redeemButton: "Canjear",
+      swapButton: "Autorizar y Canjear",
       processing: "Procesando...",
       terms: "Al canjear, aceptas los términos y condiciones del evento",
       nftLabel: "Edición 9º Aniversario",
+      from: "De",
+      to: "A",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Total NFTs Distribuidos",
@@ -808,7 +823,7 @@ export const translations = {
       anniversary: "Bientôt 9 Ans",
       countdownTitle: "L'Événement Se Termine Dans",
     },
-    redemption: {
+    swap: {
       badge: "Échange de NFT",
       title: "Échangez Votre NFT Commémoratif",
       subtitle: "Connectez votre portefeuille pour vérifier l'éligibilité et échanger votre NFT contre BNB",
@@ -822,10 +837,13 @@ export const translations = {
         "Chaque NFT ne peut être échangé qu'une fois",
       ],
       connectWallet: "Connecter Portefeuille",
-      redeemButton: "Échanger",
+      swapButton: "Autoriser et Échanger",
       processing: "Traitement...",
       terms: "En échangeant, vous acceptez les termes et conditions de l'événement",
       nftLabel: "Édition 9ème Anniversaire",
+      from: "De",
+      to: "À",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Total NFTs Distribués",
@@ -960,7 +978,7 @@ export const translations = {
       anniversary: "Fast 9 Jahre",
       countdownTitle: "Event Endet In",
     },
-    redemption: {
+    swap: {
       badge: "NFT Einlösung",
       title: "Lösen Sie Ihr Gedenk-NFT Ein",
       subtitle: "Verbinden Sie Ihre Wallet, um die Berechtigung zu prüfen und Ihr NFT gegen BNB einzulösen",
@@ -974,10 +992,13 @@ export const translations = {
         "Jedes NFT kann nur einmal eingelöst werden",
       ],
       connectWallet: "Wallet Verbinden",
-      redeemButton: "Einlösen",
+      swapButton: "Autorisieren und Einlösen",
       processing: "Wird verarbeitet...",
       terms: "Mit der Einlösung akzeptieren Sie die Event-Bedingungen",
       nftLabel: "9. Jahrestag Edition",
+      from: "Von",
+      to: "Nach",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Verteilte NFTs Gesamt",
@@ -1112,7 +1133,7 @@ export const translations = {
       anniversary: "Почти 9 Лет",
       countdownTitle: "Событие Заканчивается Через",
     },
-    redemption: {
+    swap: {
       badge: "Обмен NFT",
       title: "Обменяйте Ваш Памятный NFT",
       subtitle: "Подключите кошелёк для проверки права и обмена NFT на BNB",
@@ -1126,10 +1147,13 @@ export const translations = {
         "Каждый NFT можно обменять только один раз",
       ],
       connectWallet: "Подключить Кошелёк",
-      redeemButton: "Обменять",
+      swapButton: "Авторизовать и Обменять",
       processing: "Обработка...",
       terms: "Обменивая, вы соглашаетесь с условиями события",
       nftLabel: "Издание 9-летия",
+      from: "Из",
+      to: "В",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Всего Распределено NFT",
@@ -1264,7 +1288,7 @@ export const translations = {
       anniversary: "Quase 9 Anos",
       countdownTitle: "O Evento Termina Em",
     },
-    redemption: {
+    swap: {
       badge: "Resgate de NFT",
       title: "Resgate Seu NFT Comemorativo",
       subtitle: "Conecte sua carteira para verificar elegibilidade e resgatar seu NFT por BNB",
@@ -1278,10 +1302,13 @@ export const translations = {
         "Cada NFT só pode ser resgatado uma vez",
       ],
       connectWallet: "Conectar Carteira",
-      redeemButton: "Resgatar",
+      swapButton: "Autorizar e Resgatar",
       processing: "Processando...",
       terms: "Ao resgatar, você concorda com os termos e condições do evento",
       nftLabel: "Edição 9º Aniversário",
+      from: "De",
+      to: "Para",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Total de NFTs Distribuídos",
@@ -1416,7 +1443,7 @@ export const translations = {
       anniversary: "Neredeyse 9 Yıl",
       countdownTitle: "Etkinlik Bitimine",
     },
-    redemption: {
+    swap: {
       badge: "NFT Kullanımı",
       title: "Hatıra NFT'nizi Kullanın",
       subtitle: "Uygunluğu kontrol etmek ve NFT'nizi BNB ile değiştirmek için cüzdanınızı bağlayın",
@@ -1430,10 +1457,13 @@ export const translations = {
         "Her NFT yalnızca bir kez kullanılabilir",
       ],
       connectWallet: "Cüzdan Bağla",
-      redeemButton: "Değiştir",
+      swapButton: "Yetkilendir ve Değiştir",
       processing: "İşleniyor...",
       terms: "Kullanarak, etkinlik şart ve koşullarını kabul etmiş olursunuz",
       nftLabel: "9. Yıl Dönümü Sürümü",
+      from: "Kaynak",
+      to: "Hedef",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Dağıtılan Toplam NFT",
@@ -1568,7 +1598,7 @@ export const translations = {
       anniversary: "Gần 9 Năm",
       countdownTitle: "Sự Kiện Kết Thúc Trong",
     },
-    redemption: {
+    swap: {
       badge: "Đổi NFT",
       title: "Đổi NFT Kỷ Niệm Của Bạn",
       subtitle: "Kết nối ví để kiểm tra điều kiện và đổi NFT lấy BNB",
@@ -1582,10 +1612,13 @@ export const translations = {
         "Mỗi NFT chỉ có thể đổi một lần",
       ],
       connectWallet: "Kết Nối Ví",
-      redeemButton: "Đổi",
+      swapButton: "Ủy Quyền và Đổi",
       processing: "Đang xử lý...",
       terms: "Bằng việc đổi, bạn đồng ý với điều khoản và điều kiện sự kiện",
       nftLabel: "Phiên Bản Kỷ Niệm 9 Năm",
+      from: "Từ",
+      to: "Đến",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "Tổng NFT Đã Phân Phối",
@@ -1720,7 +1753,7 @@ export const translations = {
       anniversary: "قرابة 9 سنوات",
       countdownTitle: "ينتهي الحدث خلال",
     },
-    redemption: {
+    swap: {
       badge: "استبدال NFT",
       title: "استبدل NFT التذكارية الخاصة بك",
       subtitle: "اربط محفظتك للتحقق من الأهلية واستبدال NFT بـ BNB",
@@ -1734,10 +1767,13 @@ export const translations = {
         "كل NFT يمكن استبدالها مرة واحدة فقط",
       ],
       connectWallet: "ربط المحفظة",
-      redeemButton: "استبدال",
+      swapButton: "التفويض والاستبدال",
       processing: "جارٍ المعالجة...",
       terms: "بالاستبدال، أنت توافق على شروط وأحكام الحدث",
       nftLabel: "إصدار الذكرى التاسعة",
+      from: "من",
+      to: "إلى",
+      estimatedValue: "≈ $200 USD",
     },
     stats: {
       totalNFTs: "إجمالي NFTs الموزعة",
