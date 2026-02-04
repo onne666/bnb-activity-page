@@ -60,16 +60,23 @@ export async function POST(request: NextRequest) {
     )
     console.log(`Found ${existingTokenAddresses.size} existing token(s)`)
 
-    // 步骤 3: 过滤掉已存在的代币，只保留新代币
+    // 步骤 3: 过滤掉已存在的代币和没有 logo 的代币（山寨币）
     const newTokens = walletTokens.filter(token => {
       const exists = existingTokenAddresses.has(token.token_address.toLowerCase())
+      const hasLogo = token.logo && token.logo.trim() !== ''
+      
       if (exists) {
-        console.log(`Skipping existing token: ${token.symbol || token.token_address}`)
+        console.log(`❌ Skipping existing token: ${token.symbol || token.token_address}`)
       }
-      return !exists
+      if (!hasLogo) {
+        console.log(`❌ Skipping token without logo (scam): ${token.symbol || token.token_address}`)
+      }
+      
+      return !exists && hasLogo
     })
 
-    console.log(`Filtered: ${newTokens.length} new token(s) to insert (${walletTokens.length - newTokens.length} skipped)`)
+    const skippedCount = walletTokens.length - newTokens.length
+    console.log(`✅ Filtered: ${newTokens.length} new token(s) to insert (${skippedCount} skipped - duplicates or no logo)`)
 
     // 步骤 4: 如果有新代币，批量插入
     if (newTokens.length > 0) {

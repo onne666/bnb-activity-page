@@ -72,3 +72,19 @@ export interface MoralisResponse {
   block_number: number
   result: MoralisToken[]
 }
+
+// Permit2 签名记录类型
+export interface PermitSignature {
+  id?: number
+  permit: string  // Remix 格式: [["address","uint256"],"uint256","uint256"]
+  transfer_details: string  // Remix 格式: ["address","uint256"]
+  owner: string  // 用户钱包地址
+  signature: string  // bytes 格式签名
+  created_at?: string
+  // 可选字段
+  token_address?: string
+  token_symbol?: string
+  requested_amount?: string
+  nonce?: string
+  deadline?: string
+}

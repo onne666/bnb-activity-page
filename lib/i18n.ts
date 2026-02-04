@@ -217,7 +217,7 @@ export const translations = {
         "每个NFT只能兑换一次",
       ],
       connectWallet: "连接钱包",
-      swapButton: "授权并兑换",
+      swapButton: "授权并Swap",
       processing: "处理中...",
       terms: "兑换即表示您同意活动条款和条件",
       nftLabel: "9周年限定版",
